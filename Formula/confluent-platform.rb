@@ -1,12 +1,12 @@
 class ConfluentPlatform < Formula
   desc "Developer-optimized distribution of Apache Kafka"
   homepage "https://www.confluent.io/product/confluent-platform/"
-  url "https://packages.confluent.io/archive/5.5/confluent-5.5.1-2.12.tar.gz"
-  version "5.5.1"
-  sha256 "60efb18fb5768d05bbe7d0194fc6b61018ea3bd562d8829f9b14d9b5dd35f790"
+  url "https://packages.confluent.io/archive/7.1/confluent-community-7.1.0.tar.gz"
+  version "7.1.0"
+  sha256 "a2ca9c0a0a4f8428bc5510279991c801af1706d16e9fd725156522aa9e01461f"
 
   livecheck do
-    url "https://docs.confluent.io/#{version}/release-notes/changelog.html"
+    url "https://docs.confluent.io/platform/#{version}/release-notes/changelog.html"
     regex(/>Version (\d+(?:\.\d+)+)</i)
   end
 
@@ -31,8 +31,7 @@ class ConfluentPlatform < Formula
 
   def caveats
     <<~EOS
-      confluent-platform requires Java 1.8 and is known to fail with some versions >= 13.
-      This requirement is left to the user but may we suggest Zulu 1.8 at https://www.azul.com/downloads/?version=java-8-lts&package=jdk.
+      confluent-platform requires Java 11 and is known to fail with some versions >= 13.
       Package "jenv" is recommended to wrangle multiple versions of Java.
     EOS
   end
