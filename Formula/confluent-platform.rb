@@ -10,8 +10,6 @@ class ConfluentPlatform < Formula
     regex(/>Version (\d+(?:\.\d+)+)</i)
   end
 
-  bottle :unneeded
-
   disable! date: "2999-12-31", because: "does not have an OSI license"
 
   depends_on "jenv" => :recommended
