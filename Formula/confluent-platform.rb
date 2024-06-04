@@ -1,8 +1,8 @@
 class ConfluentPlatform < Formula
   desc "Developer-optimized distribution of Apache Kafka"
   homepage "https://www.confluent.io/product/confluent-platform/"
-  url "https://packages.confluent.io/archive/7.3/confluent-community-7.3.1.tar.gz"
-  sha256 "7f99d36f5d3dc0c64940050abb40604c0fef4225a5c8d29474a47074ac416402"
+  url "https://packages.confluent.io/archive/7.6/confluent-community-7.6.1.tar.gz"
+  sha256 "ae9a81f3cc914a21b977abeff1fa4778bf79a2c2dc8f5fc822e2da15d960bb92"
 
   livecheck do
     url "https://docs.confluent.io/platform/#{version}/release-notes/changelog.html"
@@ -11,8 +11,6 @@ class ConfluentPlatform < Formula
 
   disable! date: "2999-12-31", because: "does not have an OSI license"
 
-  depends_on "jenv" => :recommended
-
   conflicts_with "kafka", because: "kafka also ships with identically named Kafka related executables"
 
   def install
@@ -20,13 +18,6 @@ class ConfluentPlatform < Formula
     rm_rf libexec/"bin/windows"
 
     bin.write_exec_script Dir["#{libexec}/bin/*"]
-  end
-
-  def caveats
-    <<~EOS
-      confluent-platform requires Java 11 and is known to fail with some versions >= 13.
-      Package "jenv" is recommended to wrangle multiple versions of Java.
-    EOS
   end
 
   test do
